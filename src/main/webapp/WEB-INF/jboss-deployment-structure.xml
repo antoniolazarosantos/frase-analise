@@ -1,0 +1,8 @@
+<jboss-deployment-structure>
+    <deployment>
+        <dependencies>
+            <module name="javax.faces.api" export="true"/>
+            <module name="com.sun.jsf-impl" services="import"/>
+        </dependencies>
+    </deployment>
+</jboss-deployment-structure>

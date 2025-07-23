@@ -1,0 +1,11 @@
+.sem-borda table,
+.sem-borda td,
+.sem-borda tr {
+    border: none !important;
+    background: none !important;
+    padding: 0 !important;
+}
+
+.sem-borda {
+    border: none !important;
+}

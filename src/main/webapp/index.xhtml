@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Análise de Frase</title>
+    <h:outputStylesheet library="css" name="panelgrid-style.css"/>
+</h:head>
+<h:body>
+    <h:form id="form">
+        <p:panel header="Analisador de Frases">
+            <!-- Adiciona a classe para remover todas as bordas -->
+            <p:panelGrid columns="2"
+                         style="margin-bottom:10px; border: none; border-collapse: collapse;"
+                         styleClass="sem-borda"
+                         cellpadding="0"
+                         cellspacing="0">
+
+                <p:inputTextarea value="#{fraseController.frase}" rows="4" cols="60" autoResize="true"/>
+
+                <p:commandButton value="Analisar"
+                                 action="#{fraseController.analisar}"
+                                 update="form:resultado"
+                                 ajax="true"
+                                 style="vertical-align: top; margin-left: 10px;" />
+            </p:panelGrid>
+
+            <h:panelGroup id="resultado" layout="block">
+                <h:panelGrid columns="1" rendered="#{not empty fraseController.listaResultado}">
+                    <h:outputText value="Palavras distintas: #{fraseController.totalPalavrasDistintas}"/>
+
+                    <p:dataTable var="item" value="#{fraseController.listaResultado}"
+                                 style="margin-top:10px"
+                                 emptyMessage="Nenhuma palavra encontrada"
+                                 paginator="true" rows="10"
+                                 paginatorPosition="bottom"
+                                 rowsPerPageTemplate="5,10,20,30,40,50">
+
+                        <p:column headerText="Palavra">
+                            #{item.palavra}
+                        </p:column>
+
+                        <p:column headerText="Ocorrências">
+                            #{item.ocorrencias}
+                        </p:column>
+                    </p:dataTable>
+
+                </h:panelGrid>
+            </h:panelGroup>
+        </p:panel>
+    </h:form>
+</h:body>
+</html>
