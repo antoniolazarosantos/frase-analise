@@ -7,7 +7,7 @@ import java.util.*;
 @ApplicationScoped
 public class FraseService {
 
-    public Map<String, PalavraInfo> analisarFrase(String frase) {
+    public synchronized Map<String, PalavraInfo> analisarFrase(String frase) {
         Map<String, PalavraInfo> resultado = new HashMap<>();
         if (frase == null || frase.trim().isEmpty()) return resultado;
 
